@@ -32,7 +32,7 @@ class CarbonPanel extends Component {
                     Carbon Footprint
                 </Typography>
 
-                <Typography variant="h2" style={{ paddingTop:'100px' }}>
+                <Typography variant="h2" style={{ paddingTop:'50px' }}>
                     {carbon}
                 </Typography>
                 <Typography variant="body1">

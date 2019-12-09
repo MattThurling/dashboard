@@ -12,10 +12,11 @@ import { ListItem, Link } from '@material-ui/core'
 // }
 
 export default props => {
+    const { product } = props
     return(
-        <ListItem key={props.product.id}>
-            <Link href={'/product?gtin=9414416305528'}>
-                {props.product.name}
+        <ListItem key={product.id}>
+            <Link href={'/product?tpnb=' + product.tpnb}>
+                {product.name}
             </Link>
         </ListItem>
     )
