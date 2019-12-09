@@ -1,23 +1,21 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { Card, Typography } from '@material-ui/core'
 import Switch from '@material-ui/core/Switch';
 
-class Scanner extends Component {
-  state = {
-    cameraId: ''
-  }
+export default props => {
 
-  showScanner() {
+  const [cameraId, setCameraId] = useState('')
+
+  const showScanner = () => {
     const Dynamsoft = window.Dynamsoft;
     let scanner = null;
     Dynamsoft.BarcodeScanner.createInstance({
-        // onFrameRead: results => {console.log(results);},
         UIElement: document.getElementById('video-container'),
-        onUnduplicatedRead: (txt, result) => {this.props.handler(txt);}
+        onUnduplicatedRead: (txt, result) => {handleScan(txt);}
     }).then(s => {
         scanner = s;
-        this.getCamera()
-        scanner.show().then(() => scanner.play(this.state.cameraId))
+        getCamera()
+        scanner.show().then(() => scanner.play(cameraId))
         .catch(ex=>{
             console.log(ex);
             alert(ex.message || ex);
@@ -26,11 +24,15 @@ class Scanner extends Component {
     });
   };
 
+  const handleScan = (t) => {
+    window.location.href = '/product?gtin=' + t
+  }
+
   // Workaround for multi camera phones.
   // Detects the available cameras and chooses the last avaialable video input
   // Necessary for Huawei P20
   // TODO Check on other multicam phones, inc iPhone X
-  getCamera() {
+  const getCamera = () => {
     navigator.mediaDevices.enumerateDevices().then(function (devices) {
         let id = ''
 
@@ -43,23 +45,22 @@ class Scanner extends Component {
         };
         return id
     })
-    .then(i => this.setState({cameraId: i}))
+    .then(i => setCameraId(i))
   }
 
-  render() {
-    return ( 
-      <Card align="center" style={{ height: '100%' }}>
-        <Typography variant="overline">
-            Scanner
-        </Typography>
-        <Switch onClick={() => { this.showScanner() }} />
-        <video
-          id='video-container'
-          className='dbrScanner-video'
-          style={{ width: '90%', paddingTop: 20 }}></video>
-      </Card> 
-    );
-  };
+
+  return ( 
+    <Card align="center" style={{ height: '100%' }}>
+      <Typography variant="overline">
+          Scanner
+      </Typography>
+      <Switch onClick={() => { showScanner() }} />
+      <video
+        id='video-container'
+        className='dbrScanner-video'
+        style={{ width: '90%', paddingTop: 20 }}></video>
+    </Card> 
+  );
+
 }
 
-export default Scanner;

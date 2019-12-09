@@ -6,7 +6,7 @@ export default props => {
 
     return(
         <div>
-            <SideBar content='product' />
+            <SideBar content='scan' />
         </div>)
 }
 

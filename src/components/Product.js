@@ -34,10 +34,17 @@ export default props =>  {
     },[])
     
 
-    const convertMg = (x) => {
-        let g = Math.round(x/1000)
-        return g.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const converter = (x, factor) => {
+        let y = Math.round(x * factor)
+        return y.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+
+    const nutrientEfficiency = () => {
+        // TODO Assumes KG unit of measurement - probably best to do this on the back end
+        const total_energy = currentProduct.qtyContents.quantity * currentProduct.calcNutrition.calcNutrients[1].valuePer100 * 10
+        return converter(currentProduct.carbon_footprint.milligrams / (total_energy), 1)
+    }
+
 
 
     return (
@@ -52,12 +59,12 @@ export default props =>  {
 
                         <Grid item xs={12} lg={4}>
                             <CarbonPanel
-                                carbon={convertMg(currentProduct.carbon_footprint.milligrams)}
+                                carbon={converter(currentProduct.carbon_footprint.milligrams, 0.001)}
                                 confidence={currentProduct.carbon_footprint.confidence_percent}
                             />
                         </Grid>
                         <Grid item xs={12} lg={4}>
-                            <MacroPanel data={currentProduct.nutrient_milligrams}/>
+                            <MacroPanel data={currentProduct.nutrient_milligrams} efficiency={nutrientEfficiency()} />
                         </Grid>
                     </Grid> 
                 </Fragment>

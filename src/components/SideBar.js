@@ -18,8 +18,9 @@ import Typography from '@material-ui/core/Typography';
 import { NavLink } from 'react-router-dom';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 
-import Product from './Product'
-import Inventory from './Inventory'
+import Scanner from './Scanner';
+import Inventory from './Inventory';
+import Product from './Product';
 
 const drawerWidth = 240;
 
@@ -88,10 +89,10 @@ const SideBar = props => {
       </List>
       <Divider />
       <List>
-        <NavLink to='/product' style={{ textDecoration: 'none', color: 'grey' }}>
-          <ListItem button key='Product'>
+        <NavLink to='/scan' style={{ textDecoration: 'none', color: 'grey' }}>
+          <ListItem button key='Scan'>
             <ListItemIcon><AssignmentIcon /></ListItemIcon>
-            <ListItemText primary='Product' />
+            <ListItemText primary='Scan' />
           </ListItem>
         </NavLink>
       </List>
@@ -149,7 +150,9 @@ const SideBar = props => {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        { props.content === 'product' ?
+        { props.content === 'scan' ?
+          <Scanner />
+        : props.content === 'product' ?
           <Product />
         :
           <Inventory />

@@ -40,22 +40,17 @@ export default props => {
       position: 'relative',
   }
 
-  // Filter the nutrients object for the main macronutrients
-  const filtered = Object.keys(props.data)
-                          .filter(key => ['Fat', 'Carbohydrate', 'Protein'].includes(key))
-                          .reduce((obj, key) => {
-                              obj[key] = props.data[key]
-                              return obj
-                          }, {})
-                          
-  // filtered.unshift(units)
+  // Filter the nutrients object for the main macronutrients (and convert to array)
+  const filtered = Object.entries(props.data).filter(nutrient => ['Fat', 'Carbohydrate', 'Protein'].includes(nutrient[0]))
+
+  filtered.unshift(units)
     
-  console.log(filtered)
+  // Calculate nutrient efficiency score
 
   return(
    <Card align="center">
           <Typography variant="overline">
-              Macronutrients
+              Nutrition Efficiency
           </Typography>
           <table>
             <tbody>
@@ -69,10 +64,10 @@ export default props => {
                       options={options}
                     />
                   <Typography style={labelStyle} variant="h4">
-                    0.567    
+                    {props.efficiency}
                   </Typography>
                   <Typography style={subLabelStyle} variant="body1">
-                    g CO2e per kcal
+                    mg CO2e per kcal
                   </Typography>
 
                 </td>
