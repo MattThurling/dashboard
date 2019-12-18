@@ -3,6 +3,7 @@ import { Grid, Typography } from '@material-ui/core'
 import axios from 'axios'
 import CarbonPanel from './CarbonPanel'
 import MacroPanel from './MacroPanel'
+import Alert from './Alert'
 
 export default props =>  {
 
@@ -41,8 +42,10 @@ export default props =>  {
 
     const nutrientEfficiency = () => {
         // TODO Assumes KG unit of measurement - probably best to do this on the back end
+
         const total_energy = currentProduct.qtyContents.quantity * currentProduct.calcNutrition.calcNutrients[1].valuePer100 * 10
         return converter(currentProduct.carbon_footprint.milligrams / (total_energy), 1)
+                
     }
 
 
@@ -64,7 +67,11 @@ export default props =>  {
                             />
                         </Grid>
                         <Grid item xs={12} lg={4}>
+                            {currentProduct.calcNutrition ? 
                             <MacroPanel data={currentProduct.nutrient_milligrams} efficiency={nutrientEfficiency()} />
+                            :
+                            <Alert message={'Not enough information to calculate nutrition efficiency'} />
+                            }
                         </Grid>
                     </Grid> 
                 </Fragment>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, Typography } from '@material-ui/core'
+import { Grid, Card, Typography } from '@material-ui/core'
 import Switch from '@material-ui/core/Switch';
 
 export default props => {
@@ -49,17 +49,26 @@ export default props => {
   }
 
 
-  return ( 
-    <Card align="center" style={{ height: '100%' }}>
-      <Typography variant="overline">
-          Scanner
-      </Typography>
-      <Switch onClick={() => { showScanner() }} />
-      <video
-        id='video-container'
-        className='dbrScanner-video'
-        style={{ width: '90%', paddingTop: 20 }}></video>
-    </Card> 
+  return (
+
+    <Grid container spacing={5} style={{ padding: 20 }} alignItems="stretch">
+
+      <Grid item xs={12} lg={4}>
+        <Card align="center" style={{ height: '100%' }}>
+          <Typography variant="overline">
+              Scanner
+          </Typography>
+          <Switch onClick={() => { showScanner() }} />
+          <video
+            id='video-container'
+            className='dbrScanner-video'
+            style={{ width: '90%', paddingTop: 20 }}></video>
+        </Card>
+          
+      </Grid>
+        
+    </Grid> 
+     
   );
 
 }

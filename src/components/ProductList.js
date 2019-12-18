@@ -1,40 +1,10 @@
 import React, { Fragment } from 'react'
-import { List, CardContent, Chip } from '@material-ui/core'
+import { List, CardContent, Chip, Tooltip } from '@material-ui/core'
 import ProductListItem from './ProductListItem'
 
 export default props => {
 
     const products = [{
-          "image": "http://img.tesco.com/Groceries/pi/000/0240870000000/IDShot_90x90.jpg",
-          "superDepartment": "Fresh Food",
-          "tpnb": 50582870,
-          "ContentsMeasureType": "KG",
-          "name": "Tesco Pork Loin Joint",
-          "UnitOfSale": 4,
-          "AverageSellingUnitWeight": 2.006,
-          "description": ["Boneless rindless loin of pork.", "From trusted farms. Working with selected farmers that we trust, to ensure high welfare standards and consistent quality. This rindless joint is ready to roast with the bone removed, and tied for easier carving."],
-          "UnitQuantity": "KG",
-          "id": 258261577,
-          "ContentsQuantity": 1,
-          "department": "Fresh Meat & Poultry",
-          "price": 4.0,
-          "unitprice": 4.0
-        }, {
-          "image": "http://img.tesco.com/Groceries/pi/000/0236680000000/IDShot_90x90.jpg",
-          "superDepartment": "Fresh Food",
-          "tpnb": 63077803,
-          "ContentsMeasureType": "KG",
-          "name": "Tesco Large Vacuum Pack Pork Shoulder Joint",
-          "UnitOfSale": 4,
-          "AverageSellingUnitWeight": 2.844,
-          "description": ["Boneless rind on shoulder of pork.", "From trusted farms. Working with selected farmers that we trust, to ensure high welfare standards and consistent quality. Ready to roast with the bone removed, and tied for easy carving. This joint has been hand scored making it ideal for crackling."],
-          "UnitQuantity": "KG",
-          "id": 259541778,
-          "ContentsQuantity": 1,
-          "department": "Fresh Meat & Poultry",
-          "price": 3.85,
-          "unitprice": 3.85
-        }, {
           "image": "http://img.tesco.com/Groceries/pi/994/5053526772994/IDShot_90x90.jpg",
           "superDepartment": "Fresh Food",
           "tpnb": 52399427,
@@ -109,22 +79,8 @@ export default props => {
           "department": "Cooked Meats, Sandwich Fillers & Deli",
           "price": 0.8,
           "unitprice": 0.64
-        }, {
-          "image": "http://img.tesco.com/Groceries/pi/918/5052910215918/IDShot_90x90.jpg",
-          "superDepartment": "Fresh Food",
-          "tpnb": 50476132,
-          "ContentsMeasureType": "KG",
-          "name": "Tesco Roast In Bag Butter Basted Whole Chicken 1.5Kg",
-          "UnitOfSale": 1,
-          "AverageSellingUnitWeight": 1.82,
-          "description": ["Fresh Class A butter basted whole chicken with added water and seasoned with herbs. Without giblets.", "From Trusted Farms   Cook up an easy roast any day of the week. Our roast in the bag whole chicken is oven ready and seals in flavour for perfect results. This succulent centre piece is basted with butter and seasoned with herbs for a flavorsome, hassle free family meal. Just place in the oven and follow the simple cooking instructions. For a crispy skin, baste with the cooking juices after opening the bag. Return to the oven and cook for a further 5 to 10 minutes. Serve with tasty trimmings like our Real Food Yorkshire puddings recipe. Click the Recipes tab at the top of this page to find our side dish recipes. From trusted farms. Our chickens are reared by selected farmers in spacious barns with daylight and bales to encourage natural behaviours and ensure their wellbeing."],
-          "UnitQuantity": "KG",
-          "id": 275455524,
-          "ContentsQuantity": 1.5,
-          "department": "Christmas Meat, Poultry & Fish",
-          "price": 2.5,
-          "unitprice": 1.67
-        }, {
+        }, 
+        {
           "image": "http://img.tesco.com/Groceries/pi/945/5051898684945/IDShot_90x90.jpg",
           "superDepartment": "Fresh Food",
           "tpnb": 50668153,
@@ -199,22 +155,8 @@ export default props => {
           "department": "Fresh Meat & Poultry",
           "price": 3.3,
           "unitprice": 6.6
-        }, {
-          "image": "http://img.tesco.com/Groceries/pi/898/5057008233898/IDShot_90x90.jpg",
-          "superDepartment": "Fresh Food",
-          "tpnb": 81491204,
-          "ContentsMeasureType": "G",
-          "name": "Tesco 8 Pork Loin Steaks 1.08Kg",
-          "UnitOfSale": 1,
-          "AverageSellingUnitWeight": 1.26,
-          "description": ["Boneless pork loin steaks.", "From trusted farms. Working with selected farmers that we trust, to ensure high welfare standards and consistent quality."],
-          "UnitQuantity": "KG",
-          "id": 293256335,
-          "ContentsQuantity": 1080,
-          "department": "Fresh Meat & Poultry",
-          "price": 5.0,
-          "unitprice": 4.63
-        }, {
+        },
+         {
           "image": "http://img.tesco.com/Groceries/pi/488/5053526262488/IDShot_90x90.jpg",
           "superDepartment": "Fresh Food",
           "tpnb": 74668370,
@@ -311,7 +253,12 @@ export default props => {
     return(
         <Fragment>
             <CardContent>
-                <Chip label="Meat" onDelete={handleDelete} />
+               <Tooltip
+                    placement="right"
+                    title="Product list will be fully searchable. Hardcoded to a sample list for now"
+                    arrow>
+                    <Chip label="Meat" onDelete={handleDelete} />
+               </Tooltip>
             </CardContent>
             <List>
                 {products.map((i) => {

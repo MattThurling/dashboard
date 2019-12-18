@@ -9,6 +9,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Tooltip from '@material-ui/core/Tooltip';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import EcoIcon from '@material-ui/icons/Eco';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -80,20 +81,24 @@ const SideBar = props => {
 
       <List>
         <NavLink to='/' style={{ textDecoration: 'none', color: 'grey' }}>
-          <ListItem button key='Inventory'>
-            <ListItemIcon><TimelineIcon /></ListItemIcon>
-            <ListItemText primary='Inventory' color='primary'/>
-          </ListItem>
+          <Tooltip title='Mockup of organisation dashboard showing key sustainability metrics' arrow>
+            <ListItem button key='Inventory'>
+              <ListItemIcon><TimelineIcon /></ListItemIcon>
+              <ListItemText primary='Inventory' color='primary'/>
+            </ListItem>
+          </Tooltip>
         </NavLink>
 
       </List>
       <Divider />
       <List>
         <NavLink to='/scan' style={{ textDecoration: 'none', color: 'grey' }}>
-          <ListItem button key='Scan'>
-            <ListItemIcon><AssignmentIcon /></ListItemIcon>
-            <ListItemText primary='Scan' />
-          </ListItem>
+          <Tooltip title='Working prototype of product barcode scanner' arrow>
+            <ListItem button key='Scan'>
+              <ListItemIcon><AssignmentIcon /></ListItemIcon>
+              <ListItemText primary='Scan' />
+            </ListItem>
+          </Tooltip>
         </NavLink>
       </List>
     </div>
