@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,6 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Tooltip from '@material-ui/core/Tooltip';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import EcoIcon from '@material-ui/icons/Eco';
+import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,6 +22,8 @@ import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/sty
 import Scanner from './Scanner';
 import Inventory from './Inventory';
 import Product from './Product';
+import Input from './Input';
+import Tree from './Tree';
 
 const drawerWidth = 240;
 
@@ -89,14 +91,20 @@ const SideBar = props => {
           </Tooltip>
         </NavLink>
 
-      </List>
-      <Divider />
-      <List>
         <NavLink to='/scan' style={{ textDecoration: 'none', color: 'grey' }}>
           <Tooltip title='Working prototype of product barcode scanner' arrow>
             <ListItem button key='Scan'>
               <ListItemIcon><AssignmentIcon /></ListItemIcon>
               <ListItemText primary='Scan' />
+            </ListItem>
+          </Tooltip>
+        </NavLink>
+
+        <NavLink to='/input' style={{ textDecoration: 'none', color: 'grey' }}>
+          <Tooltip title='Working prototype of data input and restructuring tool' arrow>
+            <ListItem button key='Input'>
+              <ListItemIcon><CameraAltIcon /></ListItemIcon>
+              <ListItemText primary='Input' />
             </ListItem>
           </Tooltip>
         </NavLink>
@@ -159,8 +167,12 @@ const SideBar = props => {
           <Scanner />
         : props.content === 'product' ?
           <Product />
-        :
-          <Inventory />
+        : props.content === 'input' ?
+          <Input />
+        : props.content === 'tree' ?
+          <Tree shapes={[{color: "red", width: "100"}]} />
+        : 
+          <Inventory /> 
         }
       </main>
     </div>

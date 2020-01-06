@@ -6,7 +6,7 @@ export default props => {
 
             <Card align="center">
                 <Typography variant="overline">
-                    ⚠️
+                    <span role="img" aria-label="warning">⚠️</span>
                 </Typography>
 
                 <Typography variant="body1">

@@ -7,21 +7,21 @@ export default props => {
 
     const data ={carbon:
                     [
-                      ["MacroNutrient", "Grammes"],
+                      ["MacroNutrient", "Grams"],
                       ["Jun", 30],
                       ["Jul", 29],
                       ["Aug", 25]
                     ],
                 efficiency:
                     [
-                      ["MacroNutrient", "Grammes"],
+                      ["MacroNutrient", "Grams"],
                       ["Jun", 25],
                       ["Jul", 27],
                       ["Aug", 30]
                     ],
                 tranparency:
                     [
-                      ["MacroNutrient", "Grammes"],
+                      ["MacroNutrient", "Grams"],
                       ["Jun", 80],
                       ["Jul", 82],
                       ["Aug", 83]

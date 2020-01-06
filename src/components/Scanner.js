@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Grid, Card, Typography } from '@material-ui/core'
-import Switch from '@material-ui/core/Switch';
+// import Switch from '@material-ui/core/Switch';
 
 export default props => {
 
-  const [cameraId, setCameraId] = useState('')
+  // const [cameraId, setCameraId] = useState('')
 
-  const showScanner = () => {
+  // const showScanner = () => {
     const Dynamsoft = window.Dynamsoft;
     let scanner = null;
     Dynamsoft.BarcodeScanner.createInstance({
@@ -14,15 +14,15 @@ export default props => {
         onUnduplicatedRead: (txt, result) => {handleScan(txt);}
     }).then(s => {
         scanner = s;
-        getCamera()
-        scanner.show().then(() => scanner.play(cameraId))
+        // getCamera()
+        scanner.show()//.then(() => scanner.play(cameraId))
         .catch(ex=>{
             console.log(ex);
             alert(ex.message || ex);
             scanner.hide();
         });
     });
-  };
+  // };
 
   const handleScan = (t) => {
     window.location.href = '/product?gtin=' + t
@@ -32,21 +32,21 @@ export default props => {
   // Detects the available cameras and chooses the last avaialable video input
   // Necessary for Huawei P20
   // TODO Check on other multicam phones, inc iPhone X
-  const getCamera = () => {
-    navigator.mediaDevices.enumerateDevices().then(function (devices) {
-        let id = ''
+  // const getCamera = () => {
+  //   navigator.mediaDevices.enumerateDevices().then(function (devices) {
+  //       let id = ''
 
-        for(var i = 0; i < devices.length; i ++){
-            var device = devices[i];
-            console.log(device)
-            if (device.kind === 'videoinput') {
-                id = device.deviceId;
-              }
-        };
-        return id
-    })
-    .then(i => setCameraId(i))
-  }
+  //       for(var i = 0; i < devices.length; i ++){
+  //           var device = devices[i];
+  //           console.log(device)
+  //           if (device.kind === 'videoinput') {
+  //               id = device.deviceId;
+  //             }
+  //       };
+  //       return id
+  //   })
+  //   .then(i => setCameraId(i))
+  // }
 
 
   return (
@@ -58,7 +58,7 @@ export default props => {
           <Typography variant="overline">
               Scanner
           </Typography>
-          <Switch onClick={() => { showScanner() }} />
+          
           <video
             id='video-container'
             className='dbrScanner-video'
