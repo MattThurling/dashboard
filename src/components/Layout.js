@@ -11,7 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Tooltip from '@material-ui/core/Tooltip';
 import TimelineIcon from '@material-ui/icons/Timeline';
 import EcoIcon from '@material-ui/icons/Eco';
-import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -23,7 +23,7 @@ import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/sty
 import Scanner from './Scanner';
 import Inventory from './Inventory';
 import Product from './Product';
-import Input from './Input';
+import Clean from './Clean';
 import OCR from './OCR';
 
 const drawerWidth = 240;
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-const SideBar = props => {
+export default props => {
 
   const classes = useStyles();
   const theme = useTheme();
@@ -110,11 +110,11 @@ const SideBar = props => {
           </Tooltip>
         </NavLink>
 
-        <NavLink to='/input' style={{ textDecoration: 'none', color: 'grey' }}>
+        <NavLink to='/clean' style={{ textDecoration: 'none', color: 'grey' }}>
           <Tooltip title='Working prototype of data input and restructuring tool' arrow>
-            <ListItem button key='Input'>
-              <ListItemIcon><CameraAltIcon /></ListItemIcon>
-              <ListItemText primary='Input' />
+            <ListItem button key='Clean'>
+              <ListItemIcon><AccountTreeIcon /></ListItemIcon>
+              <ListItemText primary='Clean' />
             </ListItem>
           </Tooltip>
         </NavLink>
@@ -137,7 +137,7 @@ const SideBar = props => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Sustainability Analysis
+            Sustainability Analysis Playground
           </Typography>
         </Toolbar>
       </AppBar>
@@ -177,8 +177,8 @@ const SideBar = props => {
           <Scanner />
         : props.content === 'product' ?
           <Product />
-        : props.content === 'input' ?
-          <Input />
+        : props.content === 'clean' ?
+          <Clean />
         : props.content === 'ocr' ?
           <OCR />
         : 
@@ -189,5 +189,3 @@ const SideBar = props => {
   );
 }
 
-
-export default SideBar

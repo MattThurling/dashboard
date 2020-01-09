@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Typography } from '@material-ui/core'
 
 class Scanner extends Component {
 
@@ -47,12 +48,21 @@ class Scanner extends Component {
 
   render() {
     return (
+      <div>
+        <Typography variant="h4" component="h1">
+          Barcode Scan
+        </Typography>
 
-      <video
-        id='video-container'
-        className='dbrScanner-video'
-        style={{ width: '90%', paddingTop: 20 }}>
-      </video>
+        <Typography variant="body1">
+        <p>Sapling AI can already provide the best available carbon footprint estimates for over 35,000 products. Try it out by scanning a barcode. (This demo is currently optimised for well known UK food and drink brands and Tesco own brand items)</p>
+      </Typography>
+
+        <video
+          id='video-container'
+          className='dbrScanner-video'
+          style={{ width: '90%', paddingTop: 20 }}>
+        </video>
+      </div>
 
     )
   }

@@ -25,15 +25,16 @@ export default props => {
   const fileSelectedHandler = event => {
     setFileToUpload(event.target.files[0])
     props.refreshHandler()
-    setProgress(-1)
+    setProgress({show: false, value: 0})
   }
 
   const fileUploadHandler = () => {
+    setProgress({show: true, value: 0})
     const fd = new FormData()
     fd.append('file', fileToUpload, fileToUpload.name)
     axios.post('https://footprint-dot-sapling.appspot.com/ocr', fd, {
       onUploadProgress: progressEvent => {
-        setProgress(progressEvent.loaded)
+        setProgress({show: true, value: progressEvent.loaded})
       }
     })
       .then(resp => {
@@ -44,8 +45,15 @@ export default props => {
       })
   }
 
+  const displayFileName = (name) => {
+    if (name.length > 18) {
+      return 'image file'
+    }
+    return name
+  }
+
   const [fileToUpload, setFileToUpload] = useState('')
-  const [progress, setProgress] = useState(-1)
+  const [progress, setProgress] = useState({show: false, value: 0})
 
   return(
     <div className={classes.root}>
@@ -62,27 +70,33 @@ export default props => {
 
       {fileToUpload ?
         <Grid container spacing={1} alignItems="center">
+
           <Grid item>
             <ImageIcon fontSize="large" color="secondary"/>
           </Grid>
           <Grid item>
             <Typography>
-              {(fileToUpload.name).substr(-24)}
+              {displayFileName(fileToUpload.name)}
             </Typography>
           </Grid>
-          {progress < 0 ?
+
+          {!progress.show ?
             <Grid item>
               <Button onClick={fileUploadHandler} variant="contained">
                 Upload
               </Button>
             </Grid>
-          :
-            <Grid item>
-              <LinearProgress variant="determinate" value={progress} />
-            </Grid>
-            }
+          : ''
+          }
         </Grid>
-      : ''}
+      : ''
+      }
+
+      {progress.show ?
+        <LinearProgress variant="determinate" value={progress.value} />
+      : ''
+      }
+
     </div>
   )
 }

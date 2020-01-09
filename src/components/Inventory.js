@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Grid, Card } from '@material-ui/core'
+import { Grid, Card, Typography } from '@material-ui/core'
 import ChartPanel from './ChartPanel'
 import ProductList from './ProductList'
 
@@ -30,6 +30,13 @@ export default props => {
 
     return(
         <Fragment>
+          <Typography variant="h4" component="h1">
+            Welcome
+          </Typography>
+
+          <Typography variant="body1" style={{ marginBottom: '25px'}}>
+            <p>Sapling AI can analyse large inventories, intelligently filling in the missing data and providing ever more accurate and valuable sustainability insights. The charts below are dummy. The product links are live and demonstrate our simple, accessible metrics for the food and drink sector.</p>
+          </Typography>
             <Grid container spacing={5} style={{ marginBottom: '15px'}} >
 
                 <Grid item xs={12} lg={4} >      

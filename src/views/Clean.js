@@ -5,7 +5,7 @@ export default props => {
 
     return(
         <div>
-            <Layout content='input' />
+            <Layout content='clean' />
         </div>)
 }
 
