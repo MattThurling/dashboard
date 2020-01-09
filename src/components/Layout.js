@@ -13,6 +13,7 @@ import TimelineIcon from '@material-ui/icons/Timeline';
 import EcoIcon from '@material-ui/icons/Eco';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -23,7 +24,7 @@ import Scanner from './Scanner';
 import Inventory from './Inventory';
 import Product from './Product';
 import Input from './Input';
-import Tree from './Tree';
+import OCR from './OCR';
 
 const drawerWidth = 240;
 
@@ -100,6 +101,15 @@ const SideBar = props => {
           </Tooltip>
         </NavLink>
 
+        <NavLink to='/ocr' style={{ textDecoration: 'none', color: 'grey' }}>
+          <Tooltip title='Working prototype of computer vision algorithm' arrow>
+            <ListItem button key='OCR'>
+              <ListItemIcon><VisibilityIcon /></ListItemIcon>
+              <ListItemText primary='OCR' />
+            </ListItem>
+          </Tooltip>
+        </NavLink>
+
         <NavLink to='/input' style={{ textDecoration: 'none', color: 'grey' }}>
           <Tooltip title='Working prototype of data input and restructuring tool' arrow>
             <ListItem button key='Input'>
@@ -169,8 +179,8 @@ const SideBar = props => {
           <Product />
         : props.content === 'input' ?
           <Input />
-        : props.content === 'tree' ?
-          <Tree shapes={[{color: "red", width: "100"}]} />
+        : props.content === 'ocr' ?
+          <OCR />
         : 
           <Inventory /> 
         }

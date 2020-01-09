@@ -1,12 +1,11 @@
 import React from 'react'
-import SideBar from '../components/SideBar'
-
+import Layout from '../components/Layout'
 
 export default props => {
 
     return(
         <div>
-            <SideBar content='product' />
+            <Layout content='product' />
         </div>)
 }
 

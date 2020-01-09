@@ -1,14 +1,12 @@
 import React from 'react'
-import SideBar from '../components/SideBar'
+import Layout from '../components/Layout'
 
-const Inventory = props => {
+export default props => {
 
     return(
         <div>
-            <SideBar content='inventory'/>
+            <Layout content='inventory'/>
         </div>
         )
 
 }
-
-export default Inventory
