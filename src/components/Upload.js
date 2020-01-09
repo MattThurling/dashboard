@@ -67,7 +67,7 @@ export default props => {
           </Grid>
           <Grid item>
             <Typography>
-              {fileToUpload.name}
+              {(fileToUpload.name).substr(-24)}
             </Typography>
           </Grid>
           {progress < 0 ?
