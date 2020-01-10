@@ -35,7 +35,7 @@ export default props => {
           </Typography>
 
           <Typography variant="body1" style={{ marginBottom: '25px'}}>
-            <p>Sapling AI can analyse large inventories, intelligently filling in the missing data and providing ever more accurate and valuable sustainability insights. The charts below are dummy. The product links are live and demonstrate our simple, accessible metrics for the food and drink sector.</p>
+            <p>Sapling AI can analyse large inventories, intelligently filling in the missing data and providing ever more accurate and valuable sustainability insights. The product links are live and demonstrate our simple, accessible metrics for the food and drink sector. (The aggregate charts are dummy data for illustration)</p>
           </Typography>
             <Grid container spacing={5} style={{ marginBottom: '15px'}} >
 

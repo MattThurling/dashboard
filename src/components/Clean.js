@@ -23,7 +23,7 @@ export default props => {
         </Typography>
 
         <Typography variant="body1">
-          <p>Sapling AI needs to be able to handle data in all shapes and sizes. We're developing a suite of NLP (natural language processing) tools, so intuitive that even non-technical staff (eg till or warehouse) can help the system learn by correcting mistakes.</p>
+          <p>Sapling AI needs to be able to handle data in all shapes and sizes. We're developing a suite of NLP (natural language processing) tools, so intuitive that even non-technical staff (eg till or warehouse) can help out with dataset labelling.</p>
           <p>To get a sneak preview of one of these tools, upload a picture of a product. (This demo is optimised for desktop or laptop)</p>
         </Typography>
         <Upload responseHandler={parseResponse} refreshHandler={clearUp}/>
