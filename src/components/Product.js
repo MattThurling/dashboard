@@ -32,6 +32,7 @@ export default props =>  {
             setCurrentProduct(response.data)
         })
         .catch(error => {
+            console.log(error)
             alert(error + '. Product not recognised or not enough information to calculate footprint. (This prototype works best with well-known food and drink brands and Tesco own brand products.)')
             window.location.href = '/'
         })

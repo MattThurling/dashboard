@@ -3,6 +3,10 @@ import { Typography } from '@material-ui/core'
 
 class Scanner extends Component {
 
+  state = {
+    cameraId: ''
+  }
+
   componentDidMount() {
     const Dynamsoft = window.Dynamsoft
     let scanner = null
@@ -11,8 +15,10 @@ class Scanner extends Component {
         onUnduplicatedRead: (txt, result) => {this.handleScan(txt)}
     }).then(s => {
         scanner = s
-        // getCamera()
-        scanner.show()//.then(() => scanner.play(cameraId))
+        this.getCamera()
+        scanner.open().then(() => {
+          scanner.play(this.state.cameraId)
+        })
         .catch(ex=>{
             console.log(ex)
             alert(ex.message || ex)
@@ -30,21 +36,20 @@ class Scanner extends Component {
   // Detects the available cameras and chooses the last avaialable video input
   // Necessary for Huawei P20
   // TODO Check on other multicam phones, inc iPhone X
-  // const getCamera = () => {
-  //   navigator.mediaDevices.enumerateDevices().then(function (devices) {
-  //       let id = ''
+  getCamera() {
+    navigator.mediaDevices.enumerateDevices().then(function (devices) {
+        let id = ''
 
-  //       for(var i = 0; i < devices.length; i ++){
-  //           var device = devices[i];
-  //           console.log(device)
-  //           if (device.kind === 'videoinput') {
-  //               id = device.deviceId;
-  //             }
-  //       };
-  //       return id
-  //   })
-  //   .then(i => setCameraId(i))
-  // }
+        for(var i = 0; i < devices.length; i ++){
+            var device = devices[i];
+            if (device.kind === 'videoinput') {
+                id = device.deviceId;
+              }
+        };
+        return id
+    })
+    .then(i => this.setState({cameraId: i}))
+  }
 
   render() {
     return (
