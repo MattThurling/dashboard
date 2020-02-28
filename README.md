@@ -1,3 +1,7 @@
+## SAPLING SUSTAINABILITY DASHBOARD
+
+Simple dashboard interface mockup using React, Material UI and d3. See partially working preview [here](https://sapling.money).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
